@@ -6,6 +6,7 @@ import java.util.List;
 import org.hibernate.annotations.Formula;
 
 import com.asmatech.book.base.BaseEntity;
+import com.asmatech.book.validate.IPAdderss;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import jakarta.persistence.Column;
@@ -17,7 +18,6 @@ import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.Pattern;
 
 @Entity
 @Table(name = "authers")
@@ -33,7 +33,8 @@ public class Auther extends BaseEntity{
 	@NotBlank(message = "Should be Enter Auther Name.")
 	private String name;
 	
-	@Pattern(regexp = "^([0-9]{1,3})\\.([0-9]{1,3})\\.([0-9]{1,3})\\.([0-9]{1,3})$")
+//	@Pattern(regexp = "^([0-9]{1,3})\\.([0-9]{1,3})\\.([0-9]{1,3})\\.([0-9]{1,3})$")
+	@IPAdderss(message = "shoud be Enter Valid IP Address")
 	private String ipAddress;
 	
 	@Email(message = "Email not valid..")

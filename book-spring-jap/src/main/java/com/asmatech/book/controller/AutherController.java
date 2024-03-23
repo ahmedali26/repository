@@ -10,9 +10,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.asmatech.book.entity.Auther;
+import com.asmatech.book.search.AutherSearch;
 import com.asmatech.book.service.auther.AutherService;
 
 import jakarta.validation.Valid;
@@ -54,5 +56,10 @@ public class AutherController {
 	public ResponseEntity<?> deleteAuther(@PathVariable Long id) {
 		autherService.delete(id);
 		return ResponseEntity.ok(null);
+	}
+	
+	@GetMapping("/spec")
+	public ResponseEntity<?> findByAutherSpecification(@RequestBody AutherSearch search){
+		return ResponseEntity.ok(autherService.findByAutherSpecification(search));
 	}
 }
