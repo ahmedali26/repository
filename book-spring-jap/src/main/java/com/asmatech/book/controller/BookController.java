@@ -44,14 +44,14 @@ public class BookController {
 
 	@PostMapping("/add")
 	public ResponseEntity<?> addBook(@RequestBody @Valid Book book) {
-		Auther auther = autherService.findById(book.getAuther().getId()).get();
+		Auther auther = autherService.findById(book.getAuther().getId());
 		book.setAuther(auther);
-		return ResponseEntity.ok(bookService.save(book)) ;
+		return ResponseEntity.ok(bookService.insert(book)) ;
 	}
 
 	@PutMapping("/update")
 	public ResponseEntity<?> updateBook(@RequestBody @Valid Book book) {
-		return ResponseEntity.ok(bookService.save(book)) ;
+		return ResponseEntity.ok(bookService.update(book)) ;
 	}
 	
 	@DeleteMapping("/delete/{id}")

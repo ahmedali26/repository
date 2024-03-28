@@ -44,12 +44,12 @@ public class AutherController {
 
 	@PostMapping("/add")
 	public ResponseEntity<?> addAuther(@RequestBody @Valid Auther auther) {
-		return ResponseEntity.ok(autherService.save(auther)) ;
+		return ResponseEntity.ok(autherService.insert(auther)) ;
 	}
 
 	@PutMapping("/udate")
 	public ResponseEntity<?> updateAuther(@RequestBody @Valid Auther auther) {
-		return ResponseEntity.ok(autherService.save(auther)) ;
+		return ResponseEntity.ok(autherService.update(auther)) ;
 	}
 	
 	@DeleteMapping("/delete/{id}")

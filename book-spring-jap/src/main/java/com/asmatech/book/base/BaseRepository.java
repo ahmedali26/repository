@@ -14,4 +14,6 @@ public interface BaseRepository<T extends BaseEntity , ID extends Number> extend
 	@Modifying
 	@Query("update #{#entityName} t set t.statusCode=:statusCode where t.id=:id")
 	void updateEntity(@Param("id") ID id, @Param("statusCode") String statusCode);
+	
+	
 }
