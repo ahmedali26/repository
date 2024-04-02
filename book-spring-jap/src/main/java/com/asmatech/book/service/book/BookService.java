@@ -36,5 +36,5 @@ public class BookService extends BaseService<Book, Long>{
 		log.info("Claculation price.."+ LocalDateTime.now());
 	}
 	
-
+   
 }

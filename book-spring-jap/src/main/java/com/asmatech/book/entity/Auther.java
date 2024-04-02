@@ -11,6 +11,7 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -40,10 +41,13 @@ public class Auther extends BaseEntity{
 	@Email(message = "{validation.email.Pattern.message}")
 	private String email;
 	
+	@Column(name = "image_path")
+	private String imagePath;
+	
 	@Formula("(select count(*) from books b where b.auther_id = auther_id)")
 	private Integer bookCount;
 	
-	@OneToMany(mappedBy = "auther")
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "auther")
 	@JsonManagedReference
 	private List<Book>books = new ArrayList<>();
 	
@@ -92,6 +96,14 @@ public class Auther extends BaseEntity{
 	}
 
 	
+	public String getImagePath() {
+		return imagePath;
+	}
+
+	public void setImagePath(String imagePath) {
+		this.imagePath = imagePath;
+	}
+
 	public Integer getBookCount() {
 		return bookCount;
 	}

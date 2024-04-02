@@ -9,18 +9,21 @@ import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
+import io.swagger.v3.oas.models.OpenAPI;
+import io.swagger.v3.oas.models.info.Info;
+
 @Configuration
 @EnableJpaAuditing(auditorAwareRef = "auditorAware")
-public class WebConfig  implements WebMvcConfigurer{
+public class WebConfig implements WebMvcConfigurer {
 
-	//for HistoryColumns
-	
+	// for HistoryColumns
+
 	@Bean
-	public AuditorAware<String> auditorAware(){
-		return new AuditorAwareImpl();		
+	public AuditorAware<String> auditorAware() {
+		return new AuditorAwareImpl();
 	}
-	
-	//for Internationalization
+
+	// for Internationalization
 	@Bean
 	public MessageSource messageSource() {
 		ReloadableResourceBundleMessageSource messageSource = new ReloadableResourceBundleMessageSource();
@@ -28,8 +31,8 @@ public class WebConfig  implements WebMvcConfigurer{
 		messageSource.setDefaultEncoding("UTF-8");
 		return messageSource;
 	}
-	
-	//for Internationalization
+
+	// for Internationalization
 	@Override
 	@Bean
 	public LocalValidatorFactoryBean getValidator() {
@@ -37,5 +40,5 @@ public class WebConfig  implements WebMvcConfigurer{
 		bean.setValidationMessageSource(messageSource());
 		return bean;
 	}
+
 }
- 

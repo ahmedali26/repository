@@ -52,4 +52,6 @@ public class AutherService extends BaseService<Auther, Long> {
 		}
 	
 	}
+	
+
 }
